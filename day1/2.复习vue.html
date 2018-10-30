@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-text=""></div>
+</div>
+<script>
+    // 面试 ： 原生   框架    项目；
+    // 一般大公司: 原生、理论
+    // 一般小公司： 项目；
+    // vue  : 框架； MVVM模式
+    // React :  一款MVC 框架
+   new Vue({
+       el:"",
+       data:{}
+   })
+    // vue  :
+    // vue 的实例 ：
+    // 指令 ： v-for  v-if  v-show  v-bind  v-on(@) v-model  v-once  v-text  v-html   v-cloak
+    //  el  data   methods  computed  watch    components   filters  directives  props  render  template   router
+    // 生命周期 ：
+    // beforeCreate   created
+    // beforeMount  mounted
+    // beforeUpdate  updated
+    // beforeDestroy  destroyed
+
+    // 第二周 ： 组件  路由  webpack  vue-book;
+    // 组件  ： 数据传递；（props、发布订阅、eventBus、vuex）
+    // 路由 ： hash和history （单页面应用开发）  传参 [/:id,params、query]
+    // webpack  : 打包工具； node;
+    // webpack.config.js
+    //
+    module.exports = {
+       entry:"",
+        output: {
+            file: "",
+            path: ""
+        },
+        module:{
+           rules:[{test:/\.js$/,use:"babel-loader",exclude:/node_modules/},
+               {test:/.less$/,use:["style-loader","css-loader","less-loader"]}
+           ]
+        },
+        plugins:[
+            new HtmlWebpackPlugin({
+                template:"../src/index.html"
+            })
+        ]
+    }
+
+</script>
+</body>
+</html>
