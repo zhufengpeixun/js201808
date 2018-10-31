@@ -13,13 +13,14 @@ class Element{
         let  ele = document.createElement(this.type);
         for(let key in this.attr){
             // 遍历attr,将属性设置到行间属性上；
+            let val = key;
             if(key ==="className"){
-                key = "class"
+                val = "class"
             }
             if(key==="htmlFor"){
-                key ="for"
+                val ="for"
             }
-            ele.setAttribute(key,this.attr[key])
+            ele.setAttribute(val,this.attr[key]);
         }
         this.children.forEach((item,index)=>{
             // 如果该数组成员是一个虚拟的DOM元素；需要继续调用ren方法；
