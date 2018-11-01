@@ -1,2 +1,2 @@
 
-import "./source/5.非受控组件"
+import "./source/6.react的生命周期"
