@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div id="title"></div>
+ <div id="content"></div>
+ <script>
+     let title = document.getElementById("title");
+     let content = document.getElementById("content");
+     let state ={
+         title:{color:"red",text:"这是一个标题"},
+         content:{color:"blue",text:"这是一段话"}
+     }
+     // 渲染标题和字体颜色的；
+     function renderTitle() {
+         title.innerHTML = state.title.text;
+         title.style.color=state.title.color;
+     }
+     // 渲染内容和字体颜色的；
+     function renderContent() {
+         content.innerHTML = state.content.text;
+         content.style.color=state.content.color;
+     }
+     function renderApp() {
+         renderTitle();
+         renderContent();
+     }
+     renderApp();
+     // dispatch：是用来更改状态的；派发；派发一个动作；动作要包含一个类型；
+     // 在react中，把dispatch派发的类型定义成一个常量；
+     const CHANGE_TITLE = "CHANGE_TITLE";
+     const CHANGE_CONTENT = "CHANGE_CONTENT";
+     const ADD_TITLE = "ADD_TITLE";
+     const REMOVE_TITLE = "REMOVE_TITLE";
+     function dispatch(action) {
+         switch(action.type){
+             case CHANGE_TITLE:
+                 state={...state,title:{...state.title,text:action.text}};
+             case CHANGE_CONTENT:
+                 state={...state,content:{...state.content,text:action.text}}
+             case ADD_TITLE:
+                 state={...state,title:{...state.title,a:action.a}}
+             case REMOVE_TITLE:
+                 for(let key in state.title){
+                     if(key==="a"){
+                         delete state.title["a"];
+                     }
+                 }
+                 state={...state}
+         }
+     }
+     setTimeout(function () {
+         dispatch({type:REMOVE_TITLE,a:1});
+         renderApp();
+     },2000)
+ </script>
+</body>
+
+</html>

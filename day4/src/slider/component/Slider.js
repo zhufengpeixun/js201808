@@ -53,7 +53,6 @@ export default  class Slider extends React.Component{
         // 将子组件中的元素；给了父组件的sliders属性；
         //console.log(this.sliders);
     }
-
     render(){
         return <div className="container" onMouseOver={()=>{
         clearInterval(this.timer)}
