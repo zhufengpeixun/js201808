@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="title"></div>
+<div id="content"></div>
+<script>
+    let title = document.getElementById("title");
+    let content = document.getElementById("content");
+    const CHANGE_TITLE= "CHANGE_TITLE";
+    function createStore(reducer) {
+        let state;
+        let getState=()=>JSON.parse(JSON.stringify(state));
+        function dispatch(action) {//action {type:CHANGE_TITLE,text:"今天下雨了"}
+            // reducer的返回值覆盖了当前store中的state值；
+            state = reducer(state,action);
+        }
+        return {
+            getState,
+            dispatch
+        }
+    }
+    // 渲染标题和字体颜色的；
+    let initState  = {
+        title:{color:"red",text:"这是一个标题"},
+        content:{color:"blue",text:"这是一段话"}
+    }
+    // 如果state是undefined；那么用initState覆盖state的值；
+    // 这个reducer主要负责业务逻辑；这个方法是自己写的；
+    function reducer(state=initState,action) {
+        switch (action.type){
+            case CHANGE_TITLE:
+                return  {...state,title:{...state.title,text:action.text}}
+        }
+    }
+    let store = createStore(reducer);// createStore执行时，把reducer这个方法传给了
+
+    function renderTitle() {
+        title.innerHTML = store.getState().title.text;
+        title.style.color=store.getState().title.color;
+    }
+    // 渲染内容和字体颜色的；
+    function renderContent() {
+        content.innerHTML = store.getState().content.text;
+        content.style.color=store.getState().content.color;
+    }
+    function renderApp() {
+        renderTitle();
+        renderContent();
+    }
+    renderApp();
+    setTimeout(function () {
+        store.dispatch({type:CHANGE_TITLE,text:"今天下雨了"})
+        renderApp();
+    },2000)
+
+    /*function a() {
+        let obj = {b:1,h:7};
+        return obj;
+    }
+    a().h = 7;*/
+
+    function hh(a=6,b) {
+        // a 如果没有实参，会走默认值；如果有实参，那么就是实参的值；
+        console.log(a);
+    }
+    hh(4)
+
+</script>
+</body>
+</html>
