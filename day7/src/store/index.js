@@ -1,3 +1,4 @@
-/**
- * Created by 39753 on 2018/11/7.
- */
+import {createStore} from "redux";
+import reducer from "./reducer/index.js";
+let store = createStore(reducer);
+export default store;
