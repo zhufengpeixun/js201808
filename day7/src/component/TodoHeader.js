@@ -12,9 +12,12 @@ class TodoHeader extends React.Component{
             e.target.value="";
         }
     }
+    unfinish=()=>{
+        return this.props.todos.filter((item)=>!item.isSelected).length;
+    }
     render(){
         return <div>
-            <h3>亲，还有几件事未完成</h3>
+            <h3>亲，还有{this.unfinish()}件事未完成</h3>
             <input type="text" className="form-control" onKeyUp={this.addTodo}/>
         </div>
     }
