@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Counter from "./component/Counter";
-import Compute from "./component/Compute"
+import App from "./component/App";
+import {Provider} from "react-redux";
+import store from "./store/index";
+import "bootstrap/dist/css/bootstrap.css";// 引入样式；
 ReactDOM.render(
-    <div>
-        <Counter/>
-        <Compute/>
-    </div>,
-document.querySelector("#root")
-);
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+document.querySelector("#root"));

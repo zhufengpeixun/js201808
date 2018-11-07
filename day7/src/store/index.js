@@ -1,5 +1,3 @@
-import {createStore} from "redux";
-import reducer from "./reducer/Counter.js"
-let store = createStore(reducer);
-window._store = store;
-export default store;
+/**
+ * Created by 39753 on 2018/11/7.
+ */
