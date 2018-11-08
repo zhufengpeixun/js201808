@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // arguments  : 对象；
+    function fn() {
+        //arguments.pop();
+        //
+         arguments.__proto__ = Array.prototype;
+         arguments.pop();
+    }
+    fn(1,2,3,4)
+
+
+    function f(...a) {
+        //a: 数组；
+        console.log(a instanceof Array);
+        console.log(a.constructor===Array);
+    }
+    f(1,2,3,4,55,6)
+
+    // 在对象和数组的前面；扩展
+    let  arr = [100,292,383,383,2992,992];
+    console.log(100,292,383,383,2992,992);
+
+    let  a = [1,2,3];
+    let b = [4,5,6];
+    let newArr = [...a,...b,6]
+    console.log(newArr);
+
+    let obj ={user:1111,name:"杨澜"};
+    let obj2 ={user:1111,name:"田运通"};
+    console.log({...obj,...obj2,a:1});
+    let o  = {a:2}
+
+</script>
+</body>
+</html>
