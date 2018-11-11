@@ -20,18 +20,25 @@ export default {
     getLessonList(){
         return function (dispatch,getState) {
             let state = getState();
-            console.log(state);
+            //console.log(state);
             let category = state.home.currentType;
             let offset = state.home.lesson.offset;
             let limit = state.home.lesson.limit;
-            getLessons(category,offset,limit).then(function (data) {
-                // 把请求到的数据去更新store中的state；store中数据发生变化；就会导致视图刷新；
-                console.log(data);
-                dispatch({
-                    type:Types.SET_LESSONS,
-                    payload:data
-                })
-            })
+            let hasMore = state.home.lesson.hasMore;
+            if(hasMore){
+                // 如果当前还有其他值；可以继续发送请求；如果没有；不能在发请求；请求到空数组会覆盖原有的数据；
+                // 300 : 让浏览器重新计算完当前页面的DOM之后，
+
+                    getLessons(category,offset,limit).then(function (data) {
+                        // 把请求到的数据去更新store中的state；store中数据发生变化；就会导致视图刷新；
+                        console.log(data);
+                        dispatch({
+                            type:Types.SET_LESSONS,
+                            payload:data
+                        })
+                    })
+            }
+
         }
     }
 

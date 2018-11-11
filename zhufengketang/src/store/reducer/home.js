@@ -10,13 +10,14 @@ let initState = {
     }
 }
 export default function home(state=initState,action) {
+    console.log(state.lesson.offset);
     switch (action.type){
         case Types.CHANGE_TYPE:
             return {...state,currentType:action.val}
         case Types.SET_SLIDERS:
             return {...state,home:action.payload}
         case Types.SET_LESSONS:
-            return {...state,lesson:{...state.lesson,...action.payload,offset:state.lesson.offset+5}}
+            return {...state,lesson:{...state.lesson,...action.payload,list:[...state.lesson.list,...action.payload.list],offset:state.lesson.offset+5}}
     }
     return state;
 }
