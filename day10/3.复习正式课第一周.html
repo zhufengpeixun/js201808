@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 第一周：变量提升  作用域  this  面向对象；
+    // 知道代码是如何进行加载的；如何执行的；
+    // 变量： 全局和私有
+    //let a = 19;
+    // 私有变量： 在私有的作用域下定义的变量或函数形参；
+    // 全局作用域： 全局作用域一个页面只有一个；作用域都是栈内存；是不销毁的作用域；当关闭页面或浏览器器时，作用域销毁；
+    // 变量提升；在当前作用域下，把带var和function的变量进行提前声明；
+    //变量只声明，不定义，默认存储是undefined；
+    /*console.log(b);// undefined
+    var b = 0;
+    function fn() {
+        var a=10;
+    }*/
+    //console.log(a);//
+    // 只有0  ""  NaN  undefined  null 这五个值转布尔是false；
+    /*if([]){
+        var a = 1;
+    }*/
+    /*if(1=="1"){}
+    if(obj.a){}*/
+    /*console.log(fn);// 声明+ 定义； undefined；
+     if(1==1){
+     // 在es6的情况下；只声明不定义；
+     function fn() {
+
+     }
+     }*/
+    // 1.不管条件是否成立；都要进行变量提升
+    // 2. 等号右边的不进行变量提升
+    // 3. return后面的不进行变量提升，但是下面的需要
+    // 4.匿名函数不进行变量提升
+    // 5.函数作为参数，不进行变量提升；
+    // 6.如果变量名相同，只定义但不再重复声明；
+    //console.log(a);
+    /*let  obj  = {
+        fn:function a() {
+            console.log(1)
+        }
+    }*/
+
+
+    // 作用域： 栈内存；
+    // 上一级作用域：跟函数在哪定义有关，在哪个作用域下定义，上一级作用域就是谁；跟函数在哪执行没有任何关系；
+    /*let total = 100;
+    function fn() {
+        let total= 10;
+       /!* return function () {
+         console.log(total)
+         }*!/
+       return {a:1}
+    }
+    let f = fn();*/
+    // 作用域的销毁：
+    // 不销毁的作用域： 1.函数需要返回一个引用的数据类型；
+    //               2.函数的返回值需要被外界所接受占用；
+    /*let num = 1;
+    let  obj = {
+        num :8,
+        fn:(function (num) {
+            //     num =6;
+            return function () {
+                console.log(++num);// 7
+            }
+        })(obj.num)
+    }
+    let f = obj.fn;
+    f();*/
+
+    // 不立即销毁
+   /* function f() {
+        return function () {
+
+        }
+    }
+    f()();*/
+
+
+    // this : 常见的this情况；
+    // 1. 全局下的this指向window
+    // 2. 自执行函数中this也指向window;
+    // 3. 看函数前没有.,点前面是谁，this就是谁；
+    // 4. 构造函数中的this指向实例
+    // 5. 箭头函数中的this指向上一级作用域中this的指向；
+    // 6. 回调函数中的this指向window
+    // 7. 给元素绑定的事件行为中this，指向当前被绑定的元素；
+    // 8. call、apply、bind可以改变this的指向；
+
+    // 原型扩展；
+    /*Array.prototype.myPop = function () {
+        let a = this[this.length-1]
+        this.length--;
+        // 删除的那一项；
+        return a;
+    };
+    let arr = [1,23,3];
+    arr.myPop();*/
+
+
+    // 面向对象；
+    // 1.单例模式   对象
+    // 2.工厂模式  function  传参
+    // 3.构造函数模式
+    // 4.原型模式；
+
+    /*function Man() {
+        this.a = 100;
+    }
+    new Man();*/// {a:100}
+  /*  function a(num) {
+        console.log(num); //下面的函数；
+        //var num =2;
+        function num() {
+
+        }
+    }
+    a(1)
+*/
+  // 1. 形成私有的作用域---->形参赋值--->变量提升---> 代码从上到下执行---> 作用域是否销毁；
+    // 构造函数；
+    function f() {
+        //var obj = {};  this---> obj;
+        this.a = 10;
+       //return  this;
+        return {};
+    }
+    new f;
+    // instanceof  : 只要当前类在当前实例的原型链上；都返回true；
+    // arguments.__proto__= Object.prototype;
+
+
+    // 原型模式：
+    // 1.
+    // 原型链；
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

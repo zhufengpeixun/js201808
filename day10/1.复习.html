@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    "use strict";
+    // 免费课第一周： 数据类型   操作语句  function   数组的方法
+    // 1. 数据类型
+    // number : isNaN  Number   parseInt  parseFloat  toFixed
+    // string  boolean  null undefined
+    // 引用数据类型分为对象数据类型和函数数据类型；
+    // 对象数据类型： 对象{}  数组 []  正则  Date的实例 Math...
+    // 函数类型： 函数；
+    /*console.log("Math" in  window);
+    console.log(new Date);*/
+    /*let a  = function () {// 空间地址,是一个十六进制的值
+    }*/
+    /*let  obj ={a:1,b:true,c:c}
+    let b;*/
+    /*let  obj = {a:1};
+    console.log("a" in  obj)*/
+    /*let a = b = c = 10;
+    b = 100;
+    console.log(a);// 10
+    let  d = e = f = {a:1};
+    f.a = 18;
+    console.log(d);// {a:18}*/
+    /*let a = 10.666;
+    console.log(a.toFixed(2) + 19);*/
+
+    /*let  a = Symbol()
+    console.log( typeof a);*/
+    // Set : 是一种新的数据结构；类似于数组；但是里面都是独一无二的值
+    /*let  a = new  Set([1,2,3,4,1,2,3]);
+    console.log(a);
+    //
+    a.add(100);
+    console.log(a);
+    console.log(a.has(4));
+    console.log([...a]);*/
+    //![] == false  true
+    //[] == false  true
+    // [] != false
+
+
+    // string  : toUpperCase  toLowerCase  substr  substring  slice charCodeAt   charAt   indexOf  lastIndexOf   match  trim  replace  search   concat   split
+//    let str = "a";
+//    let s = "b";
+//    console.log(str.concat(s));
+
+    // null  : 空对象指针
+    //console.log(document.body.parentNode.parentNode.parentNode);
+    //console.log(document.body.offsetParent);
+    // undefined
+    // 1. 对象属性名不存在，那么得到值是undefined
+    // 2. 变量只声明没定义
+    // 3. 函数有形参没实参，也是undefined
+    // 4. 函数没有return；那么返回值是undefined；
+
+    // 对象 ：
+    /*let  obj = {a:[]};
+    let a =obj.a
+    obj["a"] = 0;
+    if(obj["a"]==0){
+
+    }*/
+
+    // function ：
+    // 定义   实参形参   arguments  return
+    /*function a(b,c,d) {
+        /!*c = 18;
+        console.log(arguments);*!/// [] 在非严格模式下，arguments和形参是有映射关系的；
+        arguments[0] =10;
+        console.log(b);
+        return  199;
+        // 1. 返回
+        // 2. 中止代码向下运行；
+    }
+    a(1,2,3)*/
+
+    // 操作语句：  三个循环 三个判断
+    // for    for in     while
+    // if     三元运算符   switch
+    // for
+    // 1. 初始化变量
+    // 2. 判断
+    // 3.执行循环体
+    // 4. i++;
+    /*function fn() {
+        let  arr = [1,2,3,3,4,4]
+        for (var i = 0; i < arr.length; i++) {
+            var obj = arr[i];
+            // continue : 结束本轮循环
+            // break ：结束整个循环；
+            if(i==3){
+                return;
+            }
+        }
+    }*/
+
+    // for in : 用于循环遍历对象可枚举属性
+    // 可枚举： 私有的和自定义的公有的；
+   /* function Fn() {
+        this.a = 10;
+        this.b = 18;
+    }
+    Fn.prototype.c = function () {
+    }
+    let b = new Fn;
+    // {a:10,b:18}
+    for(let key in b){
+        console.log(key);// a b
+        // hasOwnProperty : 校验当前属性是否是私有的；
+        if(b.hasOwnProperty(key)){
+            console.log(key)
+        }
+    }
+
+    let a = [12,23,3];
+    for(let key  in a ){
+        console.log(key);// 0  1  2
+    }
+*/
+
+    // while : 不知道循环多少次；
+    // 获取当前元素的哥哥元素节点；
+    // 阻塞主线程；
+    // 输出1和2；必须3秒之后输出1；再输出2
+    /*setTimeout(function () {
+        console.log(1);
+    },3000)*/
+    //
+    let v  = new Date();
+    while(new Date()-v<3000){}
+    console.log(1);
+    console.log(2);
+
+    // 1. 三个判断
+    // if  else if  else   三元运算；
+
+
+
+
+
+</script>
+</body>
+</html>

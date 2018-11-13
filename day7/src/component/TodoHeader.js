@@ -22,4 +22,5 @@ class TodoHeader extends React.Component{
         </div>
     }
 }
+// state:{todo:{type:"all",todos:[]},counter:{}}
 export default connect(state=>({...state.todo}),actions)(TodoHeader)

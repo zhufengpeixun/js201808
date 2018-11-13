@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.所有的函数数据（普通函数、类）类型都是Function的一个实例
+    // 2. 所有的对象数据类型（普通的对象{}、实例、prototype）都会死Object的一个实例；
+    // 类分为内置类和自定义类
+    // Number String  Boolean  Null Undefined Object  Function  Array  RegExp Date Symbol....
+
+    // Function instanceof Function  true
+    // Function instanceof Object  true
+    // Object  instanceof Function  true
+    //let a = [];
+    console.log(a instanceof Array);// true
+    console.log(a instanceof Object);// true
+    console.log(a.constructor===Object);// false
+    
+    function f() {
+        
+    }
+    let a = new Array;
+    let b = new Function;
+    a.call();
+    // 对象；. ,  ["a"]
+    let f = obj.a
+    obj.a = 17;
+
+</script>
+</body>
+</html>
