@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/home">首页</router-link>
+    <router-link to="/list">列表</router-link>
+    <router-view></router-view>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    // 1.准备组件
+    let home = {
+        template:  `<div>首页</div>`
+    };
+    let list = {
+        template:  `<div>列表页</div>`
+    };
+    // 2.配置路由映射表
+    let routes = [
+        {path:"/home/:id",component:home},
+        {path:"/list",component:list},
+        ];
+    // 3. 生成注册路由
+    let router  = new VueRouter({
+        routes
+    });
+    // 路由的两种模式： hash 和history；
+    // $router : 方法  $route ： 属性 params
+    // vue的钩子函数；
+    // beforeEach  afterEach
+    router.beforeEach((to,from,next)=>{
+        // to : 到哪去 对象
+        // from : 从哪儿来
+        // next : 函数； 继续向下运行；
+        console.log(to)
+        console.log(from)
+        console.log(a)
+        next();
+    });
+    //路由的三种传参；
+    // 1. 路径传参
+    // 2. params:
+    // 3. query 传参： 会把参数拼在url的后面；
+
+
+    // 4.注入路由
+    let vm = new Vue({
+        el: '#app',
+        router,
+        data: {}
+    });
+</script>
+</body>

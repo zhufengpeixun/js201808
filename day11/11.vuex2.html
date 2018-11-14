@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <count></count>
+    <home></home>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="./node_modules/vuex/dist/vuex.js"></script>
+<script>
+    const store = new Vuex.Store({
+        state:{
+            arr:[1,2,3,4]
+        },
+        mutations:{
+            remove(state,val){
+                state.arr = state.arr.filter((item,index)=>item!==val)
+                console.log(state.arr);
+            }
+        },
+        actions:{
+            remove(context){
+                console.log(context);
+                context.commit('remove',3);
+            }
+        }
+    });
+    let count = {
+        data(){
+            return {}
+        },
+        mounted(){
+            console.log(this);
+        },
+        template:`<div>
+                       <button @click="fn">删除</button>
+                </div>`,
+        methods:{
+            fn(){
+                //this.$store.commit("remove",3)
+                this.$store.dispatch("remove");
+            }
+        }
+    }
+    let  home = {
+        data(){
+            //console.log(100);
+            // 如果数据放在data中；那么视图不会随着数据的更新而更新；
+            return {
+                // 把全局store放到自己的私有属性上；
+                //ary:this.$store.state.arr
+            }
+        },
+        computed:{
+            ary(){
+                // 如果视图依赖此数据变化，那么需要将此属性放到当前computed属性上；当store中的state发生改变，会重新让此属性进行计算；从而属兔得到更新；
+                return this.$store.state.arr;
+            }
+        },
+        template: `<div>
+                <li v-for="a in ary">{{a}}</li>
+        </div>`
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        store:store,
+
+        components:{
+            count,
+            home
+        }
+    });
+</script>
+</body>

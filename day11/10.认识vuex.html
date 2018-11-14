@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <count></count>
+    <home></home>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="./node_modules/vuex/dist/vuex.js"></script>
+<script>
+    // 父子关系；
+    // 多个组件共享一个状态；
+    // 不同的视图触发行为更改统一状态；
+    // 构建大型的单页面应用；在组件的外部管理数据；方便管理公共的状态
+    // 创建一个公共的状态库；
+    const store = new Vuex.Store({
+        state:{
+            count:0,
+            arr:[1,2,3,4]
+        },
+        mutations:{
+            add(state){//
+                // state 就是store中的state；
+                console.log(state);
+                // 在vuex改状态都在mutations的函数中；
+                state.count++;
+            }
+        }
+
+    });
+    let count = {
+        data(){
+            return {}
+        },
+        mounted(){
+            console.log(this);
+        },
+        template:`<div>
+                      {{$store.state.count}}
+                       <button @click="fn">+</button>
+                       <button>-</button>
+                </div>`,
+        methods:{
+            fn(){
+                //this ： 组件的实例；
+                // commit 的参数是store的mutations中定义的方法名；
+                this.$store.commit("add");
+            }
+        }
+    }
+    let  home = {
+        data(){
+            return {}
+        },
+        template: `<div>{{$store.state.count}}</div>`
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        store:store,
+        // 把生成的状态库放到了组件的$store属性上；
+        components:{
+            count,
+            home
+        }
+    });
+</script>
+</body>

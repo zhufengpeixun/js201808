@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+  <list></list>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue: 组件
+    // 1. 定义组件   2. 注册组件   3.使用组件
+    let home = {
+        data(){
+            console.log(this);
+            return {a:1}
+        },
+        props:["word"],
+        template:`<div>
+                {{word}}
+         </div>`,
+        methods:{
+        }
+    }
+    /*Vue.component({
+
+    })*/
+    let  list = {
+        data(){
+          return {word:"hello"}
+        },
+        template:`<div>
+            <home :word="word"></home>
+         </div>`,
+        components:{
+            home
+        }
+    }
+    // template: 只有一个唯一的根元素；
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            // components: 注册组件
+            list
+        }
+    });
+    // vue组件的数据传递： props  发布订阅   $eventBus   vuex;
+</script>
+</body>

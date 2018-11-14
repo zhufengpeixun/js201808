@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS 盒子模型   JS的封装     jquery   懒加载瀑布流；
+    // 13个属性： 11个只读和2个可读写；
+    // clientWidth  clientHeight  clientTop  clientLeft
+    // offsetWidth  offsetHeight  offsetTop  offsetLeft  offsetParent
+    // scrollWidth  scrollHeight  scrollTop  scrollLeft;
+
+    //  JS的封装： Array.prototype;  slice
+    //  形参和实参；
+    /*function offset() {
+
+     }
+     */
+    // $("p") : jQuery的实例；
+    /*jQuery.prototype.html = function () {
+
+     }
+     jQuery.ajax = function () {
+
+     }
+     window.$  = window.jQuery = jQuery;
+     $("p").html()
+     $.ajax({})*/
+
+    // es6 :
+
+    // let  const;
+    /*for(let i=0;i<10;i++){
+     // 每循环一次，都会形成一个子作用域；
+     oLis[i] = function () {
+     console.log(i);
+     }
+     }*/
+    /*console.log(fn);// undefined
+     if([]){
+     console.log(fn);// 整个函数；
+     function fn() {
+
+     }
+     console.log(fn);// 整个函数
+     }*/
+
+
+    // 解构赋值
+    // 对象解构赋值： 必须保证属性名相同；
+    /*let {a,b} = {b:1,a:2};
+     a// 2
+     b// 1*/
+
+    // 函数可以赋默认值；
+    // 箭头函数
+    /*function fn(a=1) {
+     return {a:1};
+     }
+     let fn =a=>({a:1});*/
+    //
+
+    // class  : 定义一个类；
+    /*    class A {
+     constructor(){
+     // 私有的属性；
+     this.a =100;
+     }
+     }
+     new  A;
+
+     class B extends A{
+     constructor(){
+     super();
+     }
+     }*/
+
+    // proxy : 代理；
+    /*let  obj = new Proxy({name:1,a:2},{
+     get:function(target, key, receiver){
+     // 当获取对象的属性名对应的属性值时，会默认调用get方法；
+     // target : 目标源
+     // key : 代表是要获取的属性名//
+     // receiver: Proxy{name:1,a:2}
+     console.log(target, key, receiver);
+     },
+     set:function () {
+     // 当设置对象的属性名对应属性值，会调用set方法；
+     console.log(11);
+     }
+     });
+     console.log(obj.a);*/
+
+
+    // promise :  三个状态pending  fulfilled  rejected ;
+    // 解决回调地址
+    function getData() {
+        $.ajax({
+            url: "",
+            type: "get",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                if (data.code === 0) {
+                    $.ajax({})
+                }
+            }
+        })
+    }
+    // Promise : 是一个类；
+    // then(function(){},function(){});
+    // all race ...
+
+
+    // generator
+
+    /*function*  fn() {
+     yield "hello";
+     yield "world";
+     return 123456;
+     }
+     let  hehe = fn();
+     console.log(hehe.next());// {value: 返回值，done:布尔}；
+     console.log(hehe.next());
+     console.log(hehe.next());*/
+
+    function fn() {
+        console.log(1)
+    }
+    setTimeout(function () {
+        console.log(100);
+    }, 0)
+    async function f() {
+        await fn();
+        console.log(10)
+    }
+    console.log(f());
+</script>
+</body>
+</html>

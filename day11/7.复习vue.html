@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{arr}}
+    <!--如果时间不加括号，那么事件函数中接收的第一个参数就是事件对象-->
+    <!--如果有括号，那么还需要传事件对象，需要在括号中传入$event-->
+    <div @click="f(1,2)">66666</div>
+    <ul>
+        <li v-for="a in arr"></li>
+    </ul>
+    <img :src="" alt="">
+    <input type="text" v-model="arr">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue 的第一周： vue的属性   vue的指令   vue的生命周期
+    // vue的第二周： vue的组件    vue的路由   webpack     vue-book;
+    //Vue : 是一个类；new Vue会创建一个vue的实例；
+    // 需要传入一个对象
+    // 在对象中有一些常用的属性；
+    // el : 挂载的元素
+    // data : 数据
+    // methods : 事件的方法
+    // computed : 计算属性； 对象
+    // watch : 监听；
+    // filters: 过滤
+    // component : 组件
+    // router : 路由
+    // directives：自定义指令；
+    // 生命周期钩子函数
+
+    // beforeCreate  created
+    // beforeMount  mounted
+    // beforeUpdate   updated
+    // beforeDestroy  destroyed
+
+
+    // 指令： v-if  v-else  v-else-if  v-show  v-for  v-bind v-on  v-model
+    // v-once v-text  v-html v-cloak
+
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            // Object.defineProperty
+            arr:[1,23,4]
+        },
+        beforeCreate(){
+            // this ==> 实例；
+            console.log(this);
+            console.log(this.arr);
+            console.log(this.$el);
+        },
+        created(){
+            console.log(this.arr);
+            console.log(this.$el);
+        },
+        methods:{
+            f:function (a) {
+                console.log(a);
+            }
+        },
+        destroyed(){
+            // 清除定时器；清除事件监听者；
+            console.log(100);
+        }
+    })
+    //vm.$mount()
+    vm.$destroy()
+</script>
+</body>
+</html>
