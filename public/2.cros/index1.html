@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let xhr = new XMLHttpRequest();
+    // get  post  head  put
+    xhr.open("put","http://localhost:3000/getData",true);
+    xhr.setRequestHeader("name","201808")
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState===4&&xhr.status==200){
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.send();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+111
+<!--iframe : src的属性是可以跨域请求的；并且把整个HTML拉取过来；-->
+<iframe src="http://localhost:4000/b.html" frameborder="0" onload="load()" id="iframe"></iframe>
+<script>
+    function load() {
+        // 当iframe加载完毕；执行此函数；
+        // console.log(100);
+        let  frame = document.getElementById("iframe");
+        frame.contentWindow.postMessage('我爱你',"http://localhost:4000")
+        window.onmessage = function (e) {
+            console.log(e.data);
+        }
+    }
+</script>
+</body>
+</html>

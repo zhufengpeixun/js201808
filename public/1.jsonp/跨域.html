@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // jsonp : 有一个参数； 返回一个promise的实例；
+   function jsonp({url,params,cb}) {
+       return new Promise((resolve,reject)=>{
+           let script = document.createElement("script");
+           window[cb]  = function (data) {
+               console.log(data);
+               resolve(data)
+               document.body.removeChild(script)
+           }
+           params = {...params,cb};
+           let arr = [];
+           for(let key in params){
+               // 属性名和属性值以等号方式连接在一起；并且放入到数组中；
+               arr.push(`${key}=${params[key]}`);
+           }
+           //console.log(arr);//[]
+           script.src=`${url}?${arr.join("&")}`;
+           document.body.appendChild(script);
+       })
+   }
+    // jsonp :
+    // 1. 只能get请求；
+    // 2. 不安全  xss
+    jsonp({
+        url:"http://localhost:3000/getData",
+        params:{q:"a"},
+        cb:"show"
+    }).then(function(data){
+        // data就是跨域请求的数据；
+        console.log(data);
+    })
+
+</script>
+</body>
+</html>

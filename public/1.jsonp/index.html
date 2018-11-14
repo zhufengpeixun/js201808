@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="" alt="">
+<script>
+    // script 的src属于非同源策略； 支持跨域的请求；
+    //在script的src属性上；当通过script的src请求数据回来之后，会调用当前作用域的show方法；并且把请求回来的数据传给show的第一个参数；并且让show执行；
+    function show(data) {
+        console.log(data);
+    }
+</script>
+<script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&json=1&p=3&sid=&req=2&bs=aaas&pbs=aaas&csor=1&cb=show"></script>
+<script>
+    // 在JS中某些DOM元素 的src属性是支持跨域请求的；
+
+</script>
+</body>
+</html>
